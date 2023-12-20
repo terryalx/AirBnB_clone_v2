@@ -143,14 +143,13 @@ class HBNBCommand(cmd.Cmd):
                             value = eval(value)
                         except Exception:
                             pass
-                    setattr(new_instance, key, value)
+                        setattr(new_instance, key, value)
                 except (ValueError, IndexError):
                     pass
             new_instance.save()
             print(new_instance.id)
-        except Exception as err:
+        except Exception:
             print("** class doesn't exist **")
-            print("Error: ", err)
             return
 
     def help_create(self):
@@ -229,7 +228,7 @@ class HBNBCommand(cmd.Cmd):
         print_list = []
         params = args.split(" ")  # split args
         if args:
-            if params[0] not in HBNBCommand.classes.keys():
+            if params[0] not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
             for k, v in storage.all(params[0]).items():
