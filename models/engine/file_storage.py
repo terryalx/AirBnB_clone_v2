@@ -30,9 +30,8 @@ class FileStorage:
         dic = {}
         if cls:
             dictionary = self.__objects
-            for key in dictionary:
-                partition = key.replace(".", " ")
-                partition = shlex.split(partition)
+            for key in dictionary.keys():
+                partition = key.split(".")
                 if partition[0] == cls.__name__:
                     dic[key] = self.__objects[key]
             return dic
