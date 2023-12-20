@@ -148,8 +148,9 @@ class HBNBCommand(cmd.Cmd):
                     pass
             new_instance.save()
             print(new_instance.id)
-        except Exception:
+        except Exception as err:
             print("** class doesn't exist **")
+            print("Error: ", err)
             return
 
     def help_create(self):
