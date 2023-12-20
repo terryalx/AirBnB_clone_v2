@@ -228,7 +228,7 @@ class HBNBCommand(cmd.Cmd):
         print_list = []
         params = args.split(" ")  # split args
         if args:
-            if params[0] not in HBNBCommand.classes:
+            if params[0] not in HBNBCommand.classes.keys():
                 print("** class doesn't exist **")
                 return
             for k, v in storage.all(params[0]).items():

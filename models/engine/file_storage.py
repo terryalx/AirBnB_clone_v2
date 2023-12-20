@@ -32,7 +32,7 @@ class FileStorage:
             dictionary = self.__objects
             for key in dictionary.keys():
                 partition = key.split(".")
-                if partition[0] == cls.__name__:
+                if partition[0] == cls:
                     dic[key] = self.__objects[key]
             return dic
         else:
