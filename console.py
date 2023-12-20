@@ -130,8 +130,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         # Update method to => <Class name> <param 1>...<param n>
-        args = split(args)
-        if args[0] in HBNBCommand.classes.keys():
+        # TODO: Needs reconstruction
+        try:
+            args = split(args)
             new_instance = eval(args[0])()
             for arg in args[1:]:
                 try:
@@ -148,8 +149,9 @@ class HBNBCommand(cmd.Cmd):
                     pass
             new_instance.save()
             print(new_instance.id)
-        else:
+        except Exception:
             print("** class doesn't exist **")
+            return
 
     def help_create(self):
         """Help information for the create method"""
